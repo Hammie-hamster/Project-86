@@ -19,8 +19,8 @@
     
   </body>
   <style>
-      .body_background {
-  background-image : url("https://i.postimg.cc/2y02f4Mj/avenger-bg.jpg");
+    .body_background {
+  background-image : url("https://i.postimg.cc/jdJHFw1X/avengers.jpg");
   background-size : cover;
   background-position : center;
 }
@@ -53,14 +53,6 @@ a {
   font-size : 20px;
 }
 
-#download {
-  background : #5bc0de;
-  float : left;
-  margin-top : 25px;
-  padding : 10px;
-  border-radius : 10px;
-}
-
 #head_info {
   background : #d9534f;
   width : 600px;
@@ -68,4 +60,45 @@ a {
   margin-bottom : 10px;
 }
   </style>
+  <script>
+    canvas = document.getElementById("myCanvas");
+    ctx = canvas.getContext("2d");
+
+
+    block_image_height = 30;
+    block_image_width = 30;
+
+    player_x = 10;
+    player_y = 10;
+
+    var player_object = "";
+
+    function player_update() {
+        fabric.Image.fromURL("https://i.postimg.cc/7LBXkvnM/player.png", function(Img) {
+            player_object = Img;
+
+            player_object.scaleToWidth(150);
+            player_object.scaleToHeight(140);
+            player_object.set({
+                top : player_y,
+                left : player_x
+            });
+            canvas.add(player_object);
+        });
+    }
+
+    function new_image(get_image) {
+        fabric.Image.fromURL(get_image, function(Img) {
+            block_image_object = Img;
+
+            block_image_object.scaleToWidth(block_image_width);
+            block_image_object.scaleToHeight(block_image_height);
+            block_image_object.set({
+                top:player_y,
+                left:player_x
+            });
+            canvas.add(block_image_object);
+        })
+    }
+  </script>
 </html>
